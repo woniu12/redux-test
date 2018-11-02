@@ -1,6 +1,6 @@
 import * as actionTypes from './actionTypes'
 
-const reducers = (state = 0, action) => {
+export default (state = 0, action) => {
   switch (action.type) {
     case actionTypes.INCREMENT:
       return state + 1
@@ -11,4 +11,11 @@ const reducers = (state = 0, action) => {
   }
 }
 
-export default reducers
+// export const todo = (state = '', action) => {
+//   switch (action.type) {
+//     case "HELLO":
+//       return action.text
+//     default:
+//       return state
+//   }
+// }

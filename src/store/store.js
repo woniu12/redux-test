@@ -3,6 +3,8 @@ import reducers from './reducers'
 import {createLogger} from 'redux-logger'
 import middlePromise from 'redux-promise'
 // import thunk from 'redux-thunk'
+
+// 模拟 logger
 const logger = store => next => action =>{
   console.log('prev state',store.getState())
   console.log('dispatch',action);
