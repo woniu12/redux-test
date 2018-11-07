@@ -39,7 +39,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     }
   }
 }
-
 // mapDispatchToProps 也可以是一个对象
 // const mapDispatchToProps = {
 //   ownPropsClick: (filter) => {
