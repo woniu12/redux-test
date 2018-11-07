@@ -1,8 +1,8 @@
 import { applyMiddleware, createStore, compose } from 'redux'
 import reducers from './reducers'
 import {createLogger} from 'redux-logger'
-import middlePromise from 'redux-promise'
-// import thunk from 'redux-thunk'
+// import middlePromise from 'redux-promise'
+import thunk from 'redux-thunk'
 
 // 模拟 logger
 const logger = store => next => action =>{
@@ -13,9 +13,11 @@ const logger = store => next => action =>{
 
   console.log('next state',store.getState());
 
-  return result;
+  return new Promise((resolve, reject) => {
+    resolve(result)
+  });
 }
 
-const  store = createStore(reducers, compose(applyMiddleware(middlePromise, logger)))
+const  store = createStore(reducers, compose(applyMiddleware(thunk, logger)))
 
 export default store
