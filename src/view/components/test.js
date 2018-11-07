@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import * as actionCreators from "../../store/actionCreators"
+// import store from '../../store/store'
 
 class Test extends React.Component{
   render () {
@@ -38,5 +39,15 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     }
   }
 }
+
+// mapDispatchToProps 也可以是一个对象
+// const mapDispatchToProps = {
+//   ownPropsClick: (filter) => {
+//     return {
+//       type: 'INCREMENT',
+//       filter: filter
+//     }
+//   }
+// }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Test)
