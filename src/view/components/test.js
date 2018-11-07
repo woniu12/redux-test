@@ -1,15 +1,39 @@
 import React from 'react'
-import store from '../../store/store'
+import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
+import * as actionCreators from "../../store/actionCreators"
 
-const Test = (props) => {
-  const { increment, decrement } = props
-  return (
-    <div>
-      {store.getState()}
-      <button onClick={increment}>+</button>
-      <button onClick={decrement}>-</button>
-    </div>
-  )
+class Test extends React.Component{
+  render () {
+    const { increment, decrement } = this.props
+    return (
+      <div>
+        <div>
+          {this.props.state.increment}
+          <button onClick={increment}>+</button>
+          <button onClick={decrement}>-</button>
+          {this.props.state.decrement}
+        </div>
+        <div>
+          <button onClick={this.props.ownPropsClick}>ownProps</button>
+        </div>
+      </div>
+    )
+  }
 }
 
-export default Test
+const mapStateToProps = state => {
+  return {
+    state: state
+  }
+}
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    actions: bindActionCreators(actionCreators, dispatch),
+    ownPropsClick: () => {
+      console.log(ownProps.title)
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Test)

@@ -1,5 +1,5 @@
-import { applyMiddleware, createStore, compose } from 'redux'
-import reducers from './reducers'
+import { applyMiddleware, createStore, compose, combineReducers } from 'redux'
+import * as reducers from './reducers'
 import {createLogger} from 'redux-logger'
 // import middlePromise from 'redux-promise'
 import thunk from 'redux-thunk'
@@ -18,6 +18,8 @@ const logger = store => next => action =>{
   });
 }
 
-const  store = createStore(reducers, compose(applyMiddleware(thunk, logger)))
+const  reducer = combineReducers(reducers)
+
+const  store = createStore(reducer, compose(applyMiddleware(thunk, logger)))
 
 export default store
