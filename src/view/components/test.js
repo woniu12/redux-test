@@ -16,21 +16,24 @@ class Test extends React.Component{
         </div>
         <div>
           <button onClick={this.props.ownPropsClick}>ownProps</button>
+          {this.props.title}
         </div>
       </div>
     )
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   return {
-    state: state
+    state: state,
+    title: state.increment + ownProps.title
   }
 }
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     actions: bindActionCreators(actionCreators, dispatch),
     ownPropsClick: () => {
+      dispatch(actionCreators.increment())
       console.log(ownProps.title)
     }
   }
