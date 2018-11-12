@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import * as actionCreators from "../../store/actionCreators"
+import * as actionCreators from "@~/store/actionCreators"
 import Btn from './btn'
 
 class Test extends React.Component{
