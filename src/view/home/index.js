@@ -6,7 +6,24 @@ import { bindActionCreators } from 'redux'
 import * as actionCreators from '../../store/actionCreators'
 import Test from '../components/test'
 
+import propTypes from 'prop-types'
+
 class Home extends Component {
+
+  // context 示例
+  static childContextTypes = {
+    title: propTypes.string,
+    color: propTypes.string
+  }
+  getChildContext () {
+    return {
+      title: 'hello',
+      color: 'red'
+    }
+  }
+  handleClick = () => {
+
+  }
   render () {
     return (
       <div>
@@ -15,6 +32,7 @@ class Home extends Component {
           decrement={() => this.props.actions.decrement()}
           title="title"
         ></Test>
+        <button onClick={this.handleClick}>背景色</button>
       </div>
     )
   }

@@ -2,9 +2,17 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import * as actionCreators from "../../store/actionCreators"
-// import store from '../../store/store'
+import Btn from './btn'
 
 class Test extends React.Component{
+  constructor(props) {
+    super(props)
+  }
+
+  handleClick  = () => {
+    this.props.actions.decrement().then(res => {console.log()})
+  }
+
   render () {
     const { increment, decrement } = this.props
     return (
@@ -16,9 +24,10 @@ class Test extends React.Component{
           {this.props.state.decrement}
         </div>
         <div>
-          <button onClick={this.props.ownPropsClick}>ownProps</button>
+          <button onClick={this.handleClick}>ownProps</button>
           {this.props.title}
         </div>
+        <Btn></Btn>
       </div>
     )
   }
